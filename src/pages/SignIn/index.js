@@ -1,8 +1,18 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { StyledLink } from "../../FormComponents";
+import { 
+  Container,
+  FormContainer,
+  Logo,
+  Title,
+  Input,
+  InteractBox,
+  Button,
+  StyledLink
+} from "../../FormComponents";
 import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
+import logo from "../../assets/Logo.png";
 
 export default function SignIn(){
   const navigate = useNavigate();
@@ -35,28 +45,35 @@ export default function SignIn(){
   }
 
   return (
-      <>
-    <form onSubmit={handleSubmit}>
-      <input 
-        placeholder="E-mail"
-        type="email"
-        onChange={(e) => handleChange(e)}
-        name="email"
-        value={formData.email}
-        required
-      />
-      <input 
-        placeholder="Password"
-        type="password"
-        onChange={(e) => handleChange(e)}
-        name="password"
-        value={formData.password}
-        required
+    <>
+    <Container>
+      <FormContainer onSubmit={handleSubmit}>
+        <Logo>
+          <img src={logo} alt="logo"/>
+        </Logo>
+        <Title>Login</Title>
+        <Input 
+          placeholder="E-mail"
+          type="email"
+          onChange={(e) => handleChange(e)}
+          name="email"
+          value={formData.email}
+          required
+          />
+        <Input 
+          placeholder="Password"
+          type="password"
+          onChange={(e) => handleChange(e)}
+          name="password"
+          value={formData.password}
+          required
         />
-      <button disabled={disabled}>Login</button>
-      <StyledLink to={"/signup"}>Register Here</StyledLink>
-    </form>
-        </>
+        <InteractBox>
+          <StyledLink to={"/signup"}>First time? Create an account!</StyledLink>
+          <Button disabled={disabled}>LOGIN</Button>
+        </InteractBox>
+      </FormContainer>
+    </Container>
+  </>
   )
 }
-
