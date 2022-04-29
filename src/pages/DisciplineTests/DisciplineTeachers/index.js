@@ -1,6 +1,8 @@
+import TestAndTeacher from "../TestAndTeacher";
+
 export default function DisciplineTeachers({testsAndTeachers}){
-  console.log(testsAndTeachers);
-  const categories = repartCategories(testsAndTeachers);
+  const categories = repartCategories(testsAndTeachers[0].teste);
+  const categoryHashTable = repartTestsByCategory(testsAndTeachers[0].teste, categories);
   
   return(
     <>
@@ -8,6 +10,10 @@ export default function DisciplineTeachers({testsAndTeachers}){
         categories.map((category)=>
           <div key={category}>
             {category}
+            <TestAndTeacher 
+              tests={categoryHashTable[category]} 
+              teacher={testsAndTeachers[0].teacher.name}
+            />
           </div>
         )
       }
@@ -15,15 +21,7 @@ export default function DisciplineTeachers({testsAndTeachers}){
   )
 }
 
-function repartCategories(testsAndTeachers){
-  let tests = testsAndTeachers[0].teste;
-
-//   let tests = [];
-//   for(let i=0; i<testsAndTeachers.length; i++){
-//     tests.push(testsAndTeachers[i].teste);
-//   }
-//   console.log(tests)
-
+function repartCategories(tests){
   let categoryArr = [];
   for(let h=0; h<tests.length; h++){
     if(categoryArr.includes(tests[h].category.name)){
@@ -33,4 +31,17 @@ function repartCategories(testsAndTeachers){
   }
 
   return categoryArr;
+}
+
+function repartTestsByCategory(tests, categories){
+  let categoryHashTable = {};
+
+  for(let i=0; i<categories.length; i++){
+    const auxTestsArr = tests.filter((test) => {
+      return test.category.name === categories[i]
+    })
+    categoryHashTable[categories[i]] = auxTestsArr;
+  }
+
+  return categoryHashTable;
 }

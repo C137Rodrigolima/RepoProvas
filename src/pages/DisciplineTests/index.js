@@ -6,11 +6,8 @@ import Disciplines from "./Disciplines";
 export default function DisciplineTests(){
   const {token} = useAuth();
   const [testsTerms, setTestsTerms] = useState([]);
-  console.log(token);
 
-  useEffect(()=>{
-    getTests();
-  }, [])
+  useEffect(()=> {getTests()}, [])
 
   async function getTests(){
     const {data} = await api.getAllTests(token);
@@ -26,7 +23,7 @@ export default function DisciplineTests(){
     <>
     <div>
       {testsTerms.map((term)=> 
-        <div key={term.id}>{`${term.number}° Periodo`}
+        <div key={term.id}>{`${term.number}0 Período`}
         <Disciplines disciplines={term.disciplines}/>
         </div>
       )}

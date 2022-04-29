@@ -19,7 +19,7 @@ export default function SignIn(){
   const {persistToken} = useAuth();
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
   const [disabled, setDisabled] = useState(false);
 
@@ -59,7 +59,7 @@ export default function SignIn(){
           name="email"
           value={formData.email}
           required
-          />
+        />
         <Input 
           placeholder="Password"
           type="password"
