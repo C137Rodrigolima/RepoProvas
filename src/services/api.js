@@ -22,12 +22,19 @@ function getAllTests(token) {
 
   return response;
 }
-  
+
+function getInstructorTests(token) {
+  const config = createConfig(token);
+  const response = axios.get(`${BASE_URL}/tests/instructor`, config);
+
+  return response;
+}
 
 const api = {
-    register,
-    login,
-    getAllTests
+  register,
+  login,
+  getAllTests,
+  getInstructorTests
 }
 
 export default api;

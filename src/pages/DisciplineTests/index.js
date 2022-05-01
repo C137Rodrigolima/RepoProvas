@@ -11,7 +11,6 @@ export default function DisciplineTests(){
 
   async function getTests(){
     const {data} = await api.getAllTests(token);
-    console.log(data);
     setTestsTerms(data);
   }
   
@@ -23,9 +22,12 @@ export default function DisciplineTests(){
     <>
     <div>
       {testsTerms.map((term)=> 
+        <>
         <div key={term.id}>{`${term.number}0 Período`}
         <Disciplines disciplines={term.disciplines}/>
         </div>
+        <br />
+        </>
       )}
     </div>
     </>
