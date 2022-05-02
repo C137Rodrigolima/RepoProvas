@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react"
 import useAuth from "../../hooks/useAuth";
+import useFilter from "../../hooks/useFilter";
 import api from "../../services/api";
 import Disciplines from "./Disciplines";
 
 export default function DisciplineTests(){
   const {token} = useAuth();
+  const {change} = useFilter();
   const [testsTerms, setTestsTerms] = useState([]);
 
-  useEffect(()=> {getTests()}, [])
+  useEffect(()=> {getTests()}, [change])
 
   async function getTests(){
     const {data} = await api.getAllTests(token);
+    console.log(data);
     setTestsTerms(data);
   }
   

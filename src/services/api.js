@@ -25,7 +25,28 @@ function getAllTests(token) {
 
 function getInstructorTests(token) {
   const config = createConfig(token);
-  const response = axios.get(`${BASE_URL}/tests/instructor`, config);
+  const response = axios.get(`${BASE_URL}/instructor`, config);
+
+  return response;
+}
+
+function viewsIncrement(id, token){
+  const config = createConfig(token);
+  const response = axios.post(`${BASE_URL}/tests/${id}`, {}, config);
+
+  return response;
+}
+
+function getNamesOptions(name, token){
+  const config = createConfig(token);
+  const response = axios.get(`${BASE_URL}/input_options/${name}`, config);
+
+  return response;
+}
+
+function createNewTest(body, token){
+  const config = createConfig(token);
+  const response = axios.post(`${BASE_URL}/create_test`, body, config);
 
   return response;
 }
@@ -34,7 +55,10 @@ const api = {
   register,
   login,
   getAllTests,
-  getInstructorTests
+  getInstructorTests,
+  viewsIncrement,
+  getNamesOptions,
+  createNewTest
 }
 
 export default api;

@@ -26,7 +26,6 @@ export default function Instructors({allInstructors}){
 }
 
 function filterSeachInstructors(filter, instructors){
-console.log(filter)
 if(filter.length < 3) return instructors;
 
 const filteredBySeach = [];
