@@ -1,5 +1,7 @@
 import useFilter from "../../../hooks/useFilter";
 import DisciplinesByInstructor from "../DisciplinesByInstructor";
+import { Instructor } from "../style";
+import { NavBox } from "../style";
 
 export default function Instructors({allInstructors}){
   const {filter} = useFilter();
@@ -7,21 +9,21 @@ export default function Instructors({allInstructors}){
   const instructors = filterSeachInstructors(filter, allInstructors);
 
   return (
-    <>
+    <NavBox>
     {
       instructors.map((instructor)=>
       <>
-        <div key={instructor.id}>
+        <Instructor key={instructor.id}>
         {instructor.name}
         <DisciplinesByInstructor 
         disciplinesByInstructors={instructor.disciplinesTeachers}
         />
-        </div>
+        </Instructor>
         <br />
       </>
       )
     }
-    </>
+    </NavBox>
   );
 }
 

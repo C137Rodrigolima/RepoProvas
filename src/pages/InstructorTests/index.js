@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useFilter from "../../hooks/useFilter";
 import api from "../../services/api";
 import Instructors from "./Instructors";
+import { Container } from "./style";
 
 export default function InstructorTests(){
   const {token} = useAuth();
@@ -22,8 +23,8 @@ export default function InstructorTests(){
   }
 
   return (
-    <>
-    <Instructors allInstructors={allInstructors}/>
-    </>
+    <Container>
+      <Instructors allInstructors={allInstructors}/>
+    </Container>
   );
 }

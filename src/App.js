@@ -20,7 +20,6 @@ export const pathsWithoutHeader = ['/', '/signup'];
 
 function App() {
 
-
   return (
     <AuthProvider>
       <FilterProvider>

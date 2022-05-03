@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
+import { Container } from "./style";
 
 export default function CreateTest(){
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ export default function CreateTest(){
   }
 
   return (
-    <>
+    <Container>
     <form onSubmit={(e)=> handleSubmit(e)}>
       <InputRelative
         placeholder="Titulo da Prova"
@@ -152,7 +153,7 @@ export default function CreateTest(){
       }
       <button type="submit" disabled={disabled}>SEND</button>
     </form>
-    </>
+    </Container>
   );
 }
 const InputRelative = styled.input`

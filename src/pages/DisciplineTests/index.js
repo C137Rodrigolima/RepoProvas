@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useFilter from "../../hooks/useFilter";
 import api from "../../services/api";
 import Disciplines from "./Disciplines";
+import { Container, NavBox, Terms } from "./style";
 
 export default function DisciplineTests(){
   const {token} = useAuth();
@@ -23,16 +24,19 @@ export default function DisciplineTests(){
 
   return (
     <>
-    <div>
-      {testsTerms.map((term)=> 
-        <>
-        <div key={term.id}>{`${term.number}0 Período`}
-        <Disciplines disciplines={term.disciplines}/>
-        </div>
-        <br />
-        </>
-      )}
-    </div>
+    <Container>
+      <NavBox>
+        {testsTerms.map((term)=> 
+          <>
+          <Terms key={term.id}>
+            {`${term.number}0 Período`}
+            <Disciplines disciplines={term.disciplines}/>
+          </Terms>
+          <br />
+          </>
+        )}
+      </NavBox>
+    </Container>
     </>
   )
 }
