@@ -12,7 +12,10 @@ export default function Disciplines({disciplines}){
           <div key={discipline.id}>
             {discipline.name}
             {
-              discipline.disciplinesTeachers[0]?
+              discipline.disciplinesTeachers[0] 
+              && 
+              discipline.disciplinesTeachers[0].teste[0]
+              ?
               <DisciplineTeachers testsAndTeachers={discipline.disciplinesTeachers}/>
               :
               <div>There's no tests on this discipline Category</div>

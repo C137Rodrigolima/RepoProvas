@@ -11,12 +11,19 @@ export function AuthProvider({ children }) {
     localStorage.setItem("auth-token-repoprovas", JSON.stringify(authToken));
   }
 
+  function signOut(){
+    setToken(null);
+    localStorage.removeItem("auth-token-repoprovas");
+  }
+
   useEffect(() => {
-    setToken(localToken);
+    if(localToken){
+      setToken(localToken);
+    }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, persistToken }}>
+    <AuthContext.Provider value={{ token, persistToken, signOut}}>
       {children}
     </AuthContext.Provider>
   );

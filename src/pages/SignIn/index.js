@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { 
   Container,
@@ -16,12 +16,18 @@ import logo from "../../assets/Logo.png";
 
 export default function SignIn(){
   const navigate = useNavigate();
-  const {persistToken} = useAuth();
+  const {token, persistToken} = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
   const [disabled, setDisabled] = useState(false);
+
+  useEffect(()=>{
+    if(token){
+      navigate("/tests")
+    }
+  }, [])
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });

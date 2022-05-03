@@ -11,7 +11,7 @@ async function register(body) {
 }
 
 function login(body) {
-  const response = axios.post(`${BASE_URL}/`, body);
+  const response = axios.post(`${BASE_URL}/login`, body);
 
   return response;
 }
@@ -32,7 +32,7 @@ function getInstructorTests(token) {
 
 function viewsIncrement(id, token){
   const config = createConfig(token);
-  const response = axios.post(`${BASE_URL}/tests/${id}`, {}, config);
+  const response = axios.put(`${BASE_URL}/tests/${id}`, {}, config);
 
   return response;
 }
